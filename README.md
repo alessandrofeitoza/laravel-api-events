@@ -15,7 +15,7 @@ Essa estrutura já está dockerizada, então basta ter o docker compose rodando 
 
 Primeiro basta clonar o repositório
 
-`git clone bla bla bla`
+`git clone https://github.com/alessandrofeitoza/setup-laravel-docker`
 
 Agora entre na pasta com o terminal 
 `cd setup-laravel-docker`
@@ -38,3 +38,7 @@ E execute o composer install:
 
 
 Pronto, agora acesse o http://localhost:8080
+
+---
+
+php artisan install:api
