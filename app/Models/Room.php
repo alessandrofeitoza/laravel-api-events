@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class RoomType extends Model
+class Room extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
         'description',
+        'room_type_id',
     ];
 
     public static function getTableName(): string
@@ -20,8 +21,8 @@ class RoomType extends Model
         return with(new static)->getTable();
     }
 
-    public function rooms(): HasMany
+    public function roomType(): BelongsTo
     {
-        return $this->hasMany(Room::class);
+        return $this->belongsTo(RoomType::class);
     }
 }
