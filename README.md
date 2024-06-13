@@ -15,14 +15,14 @@ Essa estrutura já está dockerizada, então basta ter o docker compose rodando 
 
 Primeiro basta clonar o repositório
 
-`git clone https://github.com/alessandrofeitoza/setup-laravel-docker`
+`git clone https://github.com/alessandrofeitoza/laravel-api-events`
 
 Agora entre na pasta com o terminal 
-`cd setup-laravel-docker`
+`cd laravel-api-events`
 
 E agora basta rodar o docker
 
-`docker-compose up -d`
+`docker compose up -d`
 
 Pronto,é sucesso!
 
@@ -30,15 +30,21 @@ Pronto,é sucesso!
 
 Entre no container:
 
-`docker-compose exec php bash`
+`docker compose exec php bash`
 
 E execute o composer install:
 
 `composer install`
+
+Para executar as migrations
+`php artisan migrate`
+
+Para executar criar alguns dados falsos
+`php artisan db:seed`
+
 
 
 Pronto, agora acesse o http://localhost:8080
 
 ---
 
-php artisan install:api

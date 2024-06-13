@@ -11,7 +11,9 @@ Route::get('/user', function (Request $request) {
 
 Route::controller(RoomTypeApiController::class)->prefix('/room-types')->group(function () {
     Route::get('/', 'getAll');
+    Route::get('/{id}', 'getOne');
     Route::post('/', 'create');
+    Route::delete('/{id}', 'delete');
 });
 
 Route::controller(EventTypeApiController::class)->prefix('/event-types')->group(function () {

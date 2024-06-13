@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoomTypeSeeder::class,
             EventTypeSeeder::class,
+            SpaceSeeder::class,
         ]);
     }
 }

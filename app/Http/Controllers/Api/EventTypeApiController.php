@@ -14,8 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EventTypeApiController extends ApiController
 {
-    public function __construct(private EventTypeRepository $repository)
-    {
+    public function __construct(
+        private EventTypeRepository $repository
+    ) {
     }
 
     public function getAll(): JsonResponse
