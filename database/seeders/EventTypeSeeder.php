@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\EventType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class EventTypeSeeder extends Seeder
 {
