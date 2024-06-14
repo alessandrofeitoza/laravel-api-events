@@ -15,6 +15,10 @@ class EventType extends Model
 
     protected $fillable = ['name'];
 
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     public static function getTableName(): string
     {
         return with(new self)->getTable();
