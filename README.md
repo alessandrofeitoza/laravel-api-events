@@ -48,3 +48,12 @@ Pronto, agora acesse o http://localhost:8080
 
 ---
 
+### Schema do Banco de Dados
+
+```mermaid
+flowchart TD
+    EventType --> Event*
+    RoomType --> Room
+    Room-->Event*
+    Space-->Room
+```
