@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Room;
+use App\Models\RoomType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
@@ -28,10 +29,15 @@ class RoomSeeder extends Seeder
     {
         DB::table(Room::getTableName())->truncate();
 
+        $roomType = new RoomType();
+        $roomType->name = 'Auditorio';
+        $roomType->description = 'Capacidade para 100 pessoas';
+        $roomType->save();
+
         foreach (self::VALUES as $item) {
             $object = new Room();
             $object->fill($item);
-
+            $object->room_type_id = $roomType->id;
             $object->saveOrFail();
         }
     }

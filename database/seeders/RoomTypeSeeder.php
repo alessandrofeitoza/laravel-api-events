@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,8 @@ class RoomTypeSeeder extends Seeder
 
     public function run(): void
     {
-        DB::table(RoomType::getTableName())->truncate();
+        DB::table(Room::getTableName())->truncate();
+        DB::table(RoomType::getTableName())->delete();
 
         foreach (self::VALUES as $item) {
             $object = new RoomType();

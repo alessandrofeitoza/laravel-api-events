@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Models\Room;
+use App\Models\RoomType;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class RoomApiController extends ApiController
     public function getAll(): JsonResponse
     {
         return new JsonResponse(
-            Room::all()
+            Room::findAll(join: true)
         );
     }
 
