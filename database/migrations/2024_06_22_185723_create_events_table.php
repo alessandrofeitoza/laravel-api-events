@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Event;
+use App\Models\EventType;
 use App\Models\Room;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,6 +22,12 @@ return new class extends Migration
                 ->nullable()
                 ->references('id')
                 ->on(Room::getTableName())
+                ->nullOnDelete();
+
+            $table->foreignUuid('eventy_type_id')
+                ->nullable()
+                ->references('id')
+                ->on(EventType::getTableName())
                 ->nullOnDelete();
         });
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\Event;
+use App\Models\EventType;
 use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Database\Seeder;
@@ -34,22 +35,51 @@ class EventSeeder extends Seeder
     {
         DB::table(Event::getTableName())->truncate();
 
+        $roomTypeId = $this->getRoomTypeId();
+        $eventTypeId = $this->getEventTypeId();
+        foreach (self::VALUES as $data) {
+            $event = new Event();
+            $event->fill($data);
+            $event->room_id = $roomTypeId;
+            $event->eventy_type_id = $eventTypeId;
+
+            $event->save();
+        }
+    }
+
+    private function getRoomTypeId(): string
+    {
+        $roomType = $this->createRoomType();
+
+        return $this->createRoom($roomType->id)->id;
+    }
+
+    private function getEventTypeId(): string
+    {
+        $eventType = new EventType();
+        $eventType->id = 'bd993c8f-0fc4-476d-8153-08b220d1e738';
+        $eventType->name = 'Encontro dos desenvolvedores Cansados';
+        $eventType->save();
+        return $eventType->id;
+    }
+    private function createRoomType(): RoomType
+    {
         $roomType = new RoomType();
         $roomType->name = 'Auditorio';
         $roomType->description = 'Capacidade para 100 pessoas';
         $roomType->save();
 
+        return $roomType;
+    }
+
+    private function createRoom(int $roomTypeId): Room
+    {
         $room = new Room();
-        $room->id = '56ea4e1c-e071-4b20-8bfb-3b9ed02803e5';
+        $room->id = '22169527-a55f-4461-8c03-db59db61cec5';
         $room->name = 'Sala Especial';
-        $room->roomTypeId = $roomType->id;
+        $room->roomTypeId = $roomTypeId;
+        $room->save();
 
-        foreach (self::VALUES as $data) {
-            $event = new Event();
-            $event->fill($data);
-            $event->room_id = $room->id;
-
-            $event->save();
-        }
+        return $room;
     }
 }
