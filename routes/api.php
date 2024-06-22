@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
@@ -27,6 +28,14 @@ Route::controller(RoomTypeApiController::class)->prefix('/room-types')->group(fu
 });
 
 Route::controller(EventTypeApiController::class)->prefix('/event-types')->group(function () {
+    Route::get('/', 'getAll');
+    Route::get('/{id}', 'getOne');
+    Route::delete('/{id}', 'delete');
+    Route::post('/', 'create');
+    Route::patch('/{id}', 'update');
+});
+
+Route::controller(EventApiController::class)->prefix('/events')->group(function () {
     Route::get('/', 'getAll');
     Route::get('/{id}', 'getOne');
     Route::delete('/{id}', 'delete');

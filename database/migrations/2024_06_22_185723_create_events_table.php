@@ -24,7 +24,7 @@ return new class extends Migration
                 ->on(Room::getTableName())
                 ->nullOnDelete();
 
-            $table->foreignUuid('eventy_type_id')
+            $table->foreignUuid('event_type_id')
                 ->nullable()
                 ->references('id')
                 ->on(EventType::getTableName())

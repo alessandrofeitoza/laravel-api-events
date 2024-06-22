@@ -41,7 +41,7 @@ class EventSeeder extends Seeder
             $event = new Event();
             $event->fill($data);
             $event->room_id = $roomTypeId;
-            $event->eventy_type_id = $eventTypeId;
+            $event->event_type_id = $eventTypeId;
 
             $event->save();
         }
@@ -77,7 +77,7 @@ class EventSeeder extends Seeder
         $room = new Room();
         $room->id = '22169527-a55f-4461-8c03-db59db61cec5';
         $room->name = 'Sala Especial';
-        $room->roomTypeId = $roomTypeId;
+        $room->room_type_id = $roomTypeId;
         $room->save();
 
         return $room;

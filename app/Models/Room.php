@@ -16,8 +16,6 @@ class Room extends Model
         'room_type_id',
     ];
 
-    protected $appends = ['roomTypeId'];
-
     protected $keyType = 'string';
 
     public $incrementing = false;
@@ -39,15 +37,5 @@ class Room extends Model
     public function roomType(): BelongsTo
     {
         return $this->belongsTo(RoomType::class);
-    }
-
-    public function getRoomTypeIdAttribute()
-    {
-        return $this->attributes['room_type_id'];
-    }
-
-    public function setRoomTypeIdAttribute($value)
-    {
-        $this->attributes['room_type_id'] = $value;
     }
 }
