@@ -20,6 +20,7 @@ Route::controller(RoomTypeApiController::class)->prefix('/room-types')->group(fu
     Route::get('/{id}', 'getOne');
     Route::post('/', 'create');
     Route::delete('/{id}', 'delete');
+    Route::patch('/{id}', 'update');
 });
 
 Route::controller(EventTypeApiController::class)->prefix('/event-types')->group(function () {

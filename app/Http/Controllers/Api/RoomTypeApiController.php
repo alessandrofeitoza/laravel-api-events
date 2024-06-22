@@ -56,4 +56,15 @@ class RoomTypeApiController extends ApiController
 
         return new JsonResponse($item, status: 201);
     }
+
+    public function update(string $id, Request $request): JsonResponse
+    {
+        $roomType = $this->repository->find((int) $id);
+        $roomType->name = $request->get('name');
+        $roomType->description = $request->get('description');
+
+        $this->repository->save($roomType);
+
+        return new JsonResponse($roomType);
+    }
 }
