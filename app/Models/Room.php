@@ -13,6 +13,7 @@ class Room extends Model
     protected $fillable = [
         'id',
         'name',
+        'room_type_id',
     ];
 
     protected $keyType = 'string';

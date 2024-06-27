@@ -30,7 +30,7 @@ class EventTypeApiController extends ApiController
     {
         try {
             return new JsonResponse(
-                $this->repository->find((int) $id)
+                $this->repository->find($id)
             );
         } catch (Exception $exception) {
             return new NotFoundJsonResponse();
@@ -40,7 +40,7 @@ class EventTypeApiController extends ApiController
     public function delete(string $id): JsonResponse
     {
         try {
-            $this->repository->delete((int) $id);
+            $this->repository->delete($id);
 
             return new JsonResponse(status: Response::HTTP_NO_CONTENT);
         } catch (Exception) {
@@ -51,6 +51,7 @@ class EventTypeApiController extends ApiController
     public function create(Request $request): JsonResponse
     {
         $eventType = new EventType();
+        $eventType->id = $request->get('id');
         $eventType->name = $request->get('name');
 
         $this->repository->save($eventType);
@@ -60,7 +61,7 @@ class EventTypeApiController extends ApiController
 
     public function update(string $id, Request $request): JsonResponse
     {
-        $eventType = $this->repository->find((int) $id);
+        $eventType = $this->repository->find($id);
         $eventType->name = $request->get('name');
 
         $this->repository->save($eventType);

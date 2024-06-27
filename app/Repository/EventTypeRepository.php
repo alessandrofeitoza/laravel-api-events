@@ -17,7 +17,7 @@ class EventTypeRepository
         return DB::select($sql);
     }
 
-    public function find(int $id): EventType
+    public function find(string $id): EventType
     {
         $eventType = EventType::find($id);
 
@@ -28,7 +28,7 @@ class EventTypeRepository
         return $eventType;
     }
 
-    public function delete(int $id): void
+    public function delete(string $id): void
     {
         $count = EventType::destroy($id);
 

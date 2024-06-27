@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\Exception\ResourceNotFoundException;
 use App\Http\JsonResponse\NotFoundJsonResponse;
-use App\Models\RoomType;
-use App\Repository\RoomTypeRepository;
+use App\Models\Event;
+use App\Repository\EventRepository;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RoomTypeApiController extends ApiController
+class EventApiController extends ApiController
 {
-    public function __construct(private RoomTypeRepository $repository) {
-    }
+    public function __construct(
+        private EventRepository $repository
+    ) {}
 
     public function getAll(): JsonResponse
     {
@@ -28,9 +29,9 @@ class RoomTypeApiController extends ApiController
     {
         try {
             return new JsonResponse(
-                $this->repository->find((int) $id)
+                $this->repository->find($id, true)
             );
-        } catch (ResourceNotFoundException) {
+        } catch (Exception) {
             return new NotFoundJsonResponse();
         }
     }
@@ -38,33 +39,35 @@ class RoomTypeApiController extends ApiController
     public function delete(string $id): JsonResponse
     {
         try {
-            $this->repository->remove((int) $id);
+            $this->repository->remove($id);
 
             return new JsonResponse(status: Response::HTTP_NO_CONTENT);
-        } catch (ResourceNotFoundException) {
+        } catch (Exception) {
             return new NotFoundJsonResponse();
         }
     }
 
     public function create(Request $request): JsonResponse
     {
-        $item = new RoomType();
-        $item->name = $request->get('name');
-        $item->description = $request->get('description');
+        $event = new Event();
+        $event->id = $request->get('id');
+        $event->name = $request->get('name');
+        $event->date = $request->get('date');
+        $event->room_id = $request->get('room_id');
+        $event->event_type_id = $request->get('event_type_id');
 
-        $this->repository->save($item);
+        $this->repository->save($event);
 
-        return new JsonResponse($item, status: 201);
+        return new JsonResponse($event, Response::HTTP_CREATED);
     }
 
     public function update(string $id, Request $request): JsonResponse
     {
-        $roomType = $this->repository->find((int) $id);
-        $roomType->name = $request->get('name');
-        $roomType->description = $request->get('description');
+        $event = $this->repository->find($id);
+        $event->fill($request->all());
 
-        $this->repository->save($roomType);
+        $this->repository->save($event);
 
-        return new JsonResponse($roomType);
+        return new JsonResponse($event);
     }
 }

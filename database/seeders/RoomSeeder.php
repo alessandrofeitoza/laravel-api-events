@@ -27,7 +27,9 @@ class RoomSeeder extends Seeder
 
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table(Room::getTableName())->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $roomType = new RoomType();
         $roomType->name = 'Auditorio';
