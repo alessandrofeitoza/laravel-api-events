@@ -1,0 +1,15 @@
+escola:
+  nome: Digital College
+  endereco:
+    logradouro: Av Santos Dumont
+    numero: 90
+  telefones: ['85 9999', '85 123123']
+  telefones:
+    - '85 9999'
+    - '95 1234'
+
+
+/rooms:
+  get:
+
+  post

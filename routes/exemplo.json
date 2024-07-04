@@ -1,0 +1,12 @@
+{
+    "nome": "Digital College",
+    "endereco": {
+        "logradouro": "Av SAntos Dumont",
+        "numero": 10
+    },
+    "telefones": [
+        "85 9999",
+        "85 9876"
+    ]
+}
+

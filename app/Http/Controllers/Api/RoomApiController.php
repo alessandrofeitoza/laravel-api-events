@@ -8,6 +8,7 @@ use App\Http\JsonResponse\NotFoundJsonResponse;
 use App\Models\Room;
 use App\Repository\RoomRepository;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,12 +39,30 @@ class RoomApiController extends ApiController
 
     public function create(Request $request): JsonResponse
     {
+
+        $file = $request->files;
+
+//        if (false === str_contains('png', $file->get('image_url')->getMimeType())) {
+//            die('arquivo invalido');
+//        }
+        $id = $request->get('id');
+
+        $imageName = $file->get('image_url')->getClientOriginalName();
+        $imagePath = "photos/room_{$id}_{$imageName}"; // photos/room_123_festenha.png
+
+        Storage::disk('public')->move(
+            $file->get('image_url')->getRealPath(),
+            dirname(__DIR__, 4) . '/public/' . $imagePath
+        );
+
         $room = new Room();
-        $room->id = $request->get('id');
+        $room->id = $id;
         $room->name = $request->get('name');
+        $room->image_url = Storage::url($imagePath);
         $room->room_type_id = $request->get('room_type_id');
 
         $this->repository->save($room);
+
 
         return new JsonResponse($room, status: 201);
     }

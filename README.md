@@ -57,3 +57,57 @@ flowchart TD
     Room-->Event*
     Space-->Room
 ```
+
+--- 
+Esquema de autorizacao do usuario;
+
+```mermaid
+classDiagram
+    perfis_users --> User  
+    perfis_users --> Perfil 
+
+    Permissao --> Action
+    Permissao --> Resource
+
+    perfis_permissoes --> Perfil
+    perfis_permissoes --> Permissao 
+
+    class User {
+        - int $id
+        + string $name
+        + string $password
+    }
+
+    class perfis_users {
+        + user_id
+        + perfil_id
+    }
+
+    class Perfil {
+        - int $id
+        + string $nome (Admin, Comum)
+    }
+
+    class perfis_permissoes {
+        + int $resource_id
+        + int $perfil_id
+    }
+
+    class Permissao {
+        - int $id
+        + string $description (add_space, retrieve_spaces)
+        + int $resource_id
+        + int $action_id
+    }
+
+    class Resource {
+        - int $id
+        + string $name
+    }
+
+    class Action{
+        - int $id
+        + string $name
+    }
+
+```

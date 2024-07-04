@@ -1,0 +1,54 @@
+openapi: 3.0.2
+info:
+  title: API da reserva de espacos
+servers:
+- url: /api
+tags:
+- name: Spaces
+  description: Todos os endpoints relacionados a Espacos
+- name: Events
+  description: Todos os endpoints relacionados a Eventos  
+- name: Rooms
+  description: Todos os endpoints relacionados a Salas
+
+paths:
+  /rooms:
+    get:
+      tags: ['Rooms']
+      responses:
+        "200":
+          description: Uma lista de objetos do tipo Room
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: string
+                      example: 0c4bf853-48a0-42a2-92b8-4c01698b0910
+                    name:
+                      type: string
+                      example: Jack Ma
+  /rooms/{id}:
+    get:
+      tags: [ 'Rooms' ]
+      parameters:
+        - in: path
+          name: id
+          example: 0c4bf853-48a0-42a2-92b8-4c01698b0910
+
+      responses:
+        "200":
+          description: Um objeto do tipo Room
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                    example: 0c4bf853-48a0-42a2-92b8-4c01698b0910
+                  name:
+                    type: string
+                    example: Jack Ma
+

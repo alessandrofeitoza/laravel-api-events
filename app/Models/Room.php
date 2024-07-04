@@ -14,6 +14,7 @@ class Room extends Model
         'id',
         'name',
         'room_type_id',
+        'image_url',
     ];
 
     protected $keyType = 'string';
