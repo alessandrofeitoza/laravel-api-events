@@ -11,6 +11,31 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::post('/login', function (Request $request) {
+    $user = \App\Models\User::query()
+        ->where(
+            'email',
+            '=',
+            $request->get('email')
+        )->first();
+
+    if (null === $user) {
+        password_verify('1234', '$2a$12$HuO4kv30f1XaK8.Qa6OPs.w43hQhrqjdRE6oyphgP8bn8CjhfvrhG');
+        return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
+    }
+
+    if (false === password_verify($request->get('password'), $user->password)) {
+        return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
+    }
+
+    $user->remember_token =  md5(microtime()); //gerar o token
+    $user->save();
+
+    return new \Symfony\Component\HttpFoundation\JsonResponse([
+        'token' => $user->remember_token,
+    ]);
+});
+
 Route::controller(RoomApiController::class)->prefix('/rooms')->group(function () {
     Route::get('/', 'getAll');
     Route::get('/{id}', 'getOne');

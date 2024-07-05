@@ -77,6 +77,7 @@ class EventSeeder extends Seeder
         $room = new Room();
         $room->id = '22169527-a55f-4461-8c03-db59db61cec5';
         $room->name = 'Sala Especial';
+        $room->image_url = 'https://www.opovo.com.br/_midias/jpg/2022/06/09/995x663/1_suite_quarto_vermelho_ela_e_ele_motel_maraponga-18936349.jpg';
         $room->room_type_id = $roomTypeId;
         $room->save();
 

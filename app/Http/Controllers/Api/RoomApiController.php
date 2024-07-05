@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\JsonResponse\NotFoundJsonResponse;
 use App\Models\Room;
+use App\Models\User;
 use App\Repository\RoomRepository;
 use Exception;
 use Illuminate\Support\Facades\Storage;
@@ -19,8 +20,21 @@ class RoomApiController extends ApiController
         private RoomRepository $repository
     ) {}
 
-    public function getAll(): JsonResponse
+    public function getAll(Request $request): JsonResponse
     {
+        //TODO: pegar de auth
+        $token = $request->headers->get('authorization');
+
+        $user = User::query()->where(
+            'remember_token',
+            '=',
+            $token
+        )->first();
+
+        if (null === $user) {
+            return new JsonResponse(status: 403);
+        }
+
         return new JsonResponse(
             Room::findAll(join: true)
         );
