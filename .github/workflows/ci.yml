@@ -1,0 +1,13 @@
+name: tests
+
+on: [pull_request]
+jobs:
+  CODE_STYLE:
+    name: CODE STYLE
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run PHP-CS-Fixer
+        uses: erkenes/php-cs-fixer-action@main
+        with:
+          args: '--dry-run --diff -vvv'
