@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
+use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -67,3 +68,12 @@ Route::controller(EventApiController::class)->prefix('/events')->group(function 
     Route::post('/', 'create');
     Route::patch('/{id}', 'update');
 });
+
+Route::controller(UserApiController::class)->prefix('/users')->group(function () {
+    Route::get('/', 'getAll');
+    Route::get('/{id}', 'getOne');
+    Route::delete('/{id}', 'delete');
+    Route::post('/', 'create');
+    Route::patch('/{id}', 'update');
+});
+
