@@ -40,7 +40,6 @@ class RoomSeeder extends Seeder
             $object = new Room();
             $object->fill($item);
             $object->room_type_id = $roomType->id;
-            $object->image_url = 'https://www.opovo.com.br/_midias/jpg/2022/06/09/995x663/1_suite_quarto_vermelho_ela_e_ele_motel_maraponga-18936349.jpg';
             $object->saveOrFail();
         }
     }

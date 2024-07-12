@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
+use App\Http\Controllers\Api\UsersApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,31 +11,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
-Route::post('/login', function (Request $request) {
-    $user = \App\Models\User::query()
-        ->where(
-            'email',
-            '=',
-            $request->get('email')
-        )->first();
-
-    if (null === $user) {
-        password_verify('1234', '$2a$12$HuO4kv30f1XaK8.Qa6OPs.w43hQhrqjdRE6oyphgP8bn8CjhfvrhG');
-        return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
-    }
-
-    if (false === password_verify($request->get('password'), $user->password)) {
-        return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
-    }
-
-    $user->remember_token =  md5(microtime()); //gerar o token
-    $user->save();
-
-    return new \Symfony\Component\HttpFoundation\JsonResponse([
-        'token' => $user->remember_token,
-    ]);
-});
 
 Route::controller(RoomApiController::class)->prefix('/rooms')->group(function () {
     Route::get('/', 'getAll');
@@ -67,3 +43,12 @@ Route::controller(EventApiController::class)->prefix('/events')->group(function 
     Route::post('/', 'create');
     Route::patch('/{id}', 'update');
 });
+
+Route::controller(UsersApiController::class)->prefix('/users')->group(function () {
+    Route::get('/', 'getAll');
+    Route::get('/{id}', 'getOne');
+    Route::post('/', 'create');
+    Route::delete('/{id}', 'delete');
+    Route::patch('/{id}', 'update');
+});
+

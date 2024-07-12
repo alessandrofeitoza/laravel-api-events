@@ -44,4 +44,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function findAll(): iterable
+    {
+        
+        return self::all();
+
+    }
 }

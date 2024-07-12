@@ -13,8 +13,7 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
             EventTypeSeeder::class,
             SpaceSeeder::class,
-            EventSeeder::class,
-            UserSeeder::class,
+            EventSeeder::class
         ]);
     }
 }
