@@ -19,8 +19,8 @@ return new class extends Migration
 
     public function down(): void
     {
-        profile::where('name', 'Admin')->delete();
-        profile::where('description','Administrador Geral')->delete();
+        Profile::where('name', 'Admin')->delete();
+        Profile::where('description','Administrador Geral')->delete();
     }
 
 };
