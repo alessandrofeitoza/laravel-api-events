@@ -14,7 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoomTypeApiController extends ApiController
 {
-    public function __construct(private RoomTypeRepository $repository) {
+    public function __construct(private RoomTypeRepository $repository)
+    {
     }
 
     public function getAll(): JsonResponse

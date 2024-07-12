@@ -12,14 +12,14 @@ class EventRepository
 {
     public function findAll(): iterable
     {
-        $sql = "SELECT * FROM " . Event::getTableName();
+        $sql = 'SELECT * FROM '.Event::getTableName();
 
         return DB::select($sql);
     }
 
     public function find(string $id, bool $withRelations = false): Event
     {
-        $event = $withRelations === false ? Event::find($id) : Event::findOneWithRelations($id);
+        $event = false === $withRelations ? Event::find($id) : Event::findOneWithRelations($id);
 
         if (null === $event) {
             throw new ResourceNotFoundException();

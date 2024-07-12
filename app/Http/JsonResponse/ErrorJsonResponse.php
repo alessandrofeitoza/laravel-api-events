@@ -12,7 +12,7 @@ class ErrorJsonResponse extends JsonResponse
     public function __construct(string $message, int $status = Response::HTTP_BAD_REQUEST)
     {
         parent::__construct([
-            'error' => $message
+            'error' => $message,
         ], $status);
     }
 }

@@ -18,11 +18,12 @@ class RoomApiController extends ApiController
 {
     public function __construct(
         private RoomRepository $repository
-    ) {}
+    ) {
+    }
 
     public function getAll(Request $request): JsonResponse
     {
-        //TODO: pegar de auth
+        // TODO: pegar de auth
         $token = $request->headers->get('authorization');
 
         $user = User::query()->where(
@@ -53,12 +54,11 @@ class RoomApiController extends ApiController
 
     public function create(Request $request): JsonResponse
     {
-
         $file = $request->files;
 
-//        if (false === str_contains('png', $file->get('image_url')->getMimeType())) {
-//            die('arquivo invalido');
-//        }
+        //  if (false === str_contains('png', $file->get('image_url')->getMimeType())) {
+        //      die('arquivo invalido');
+        //  }
         $id = $request->get('id');
 
         $imageName = $file->get('image_url')->getClientOriginalName();
@@ -66,7 +66,7 @@ class RoomApiController extends ApiController
 
         Storage::disk('public')->move(
             $file->get('image_url')->getRealPath(),
-            dirname(__DIR__, 4) . '/public/' . $imagePath
+            dirname(__DIR__, 4).'/public/'.$imagePath
         );
 
         $room = new Room();
@@ -76,7 +76,6 @@ class RoomApiController extends ApiController
         $room->room_type_id = $request->get('room_type_id');
 
         $this->repository->save($room);
-
 
         return new JsonResponse($room, status: 201);
     }
