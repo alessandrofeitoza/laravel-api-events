@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
 use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -79,3 +80,11 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
 });
 
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/', [ProfileController::class, 'index']);
+    Route::get('/{id}', [ProfileController::class, 'show']);
+    Route::post('/', [ProfileController::class, 'store']);
+    Route::patch('/{id}', [ProfileController::class, 'update']);
+    Route::delete('/{id}', [ProfileController::class, 'delete']);
+});
