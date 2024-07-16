@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\RoomTypeApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -77,3 +78,4 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
     Route::patch('/{id}', 'update');
 });
 
+Route::post('/login', [AuthController::class, 'login']);
