@@ -22,8 +22,8 @@ class ProfileController extends ApiController
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'description' => 'nullable|string',
+            'name' => 'nullable|string',
+            'description' => 'required|string',
         ]);
     
         $profile = Profile::create([
@@ -33,6 +33,7 @@ class ProfileController extends ApiController
     
         return response()->json($profile, 201);
     }
+    
 
     public function update(Request $request, $id)
     {
