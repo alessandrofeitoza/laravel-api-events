@@ -38,14 +38,14 @@ return [
     'guards' => [
         'auth' => [
             'driver' => 'session',
-            'provider' => 'auth_users', // Verifique se o provider está definido corretamente
+            'provider' => 'auth_users', 
         ],
     ],
 
     'providers' => [
         'auth_users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\AuthUser::class, // Verifique se o modelo está corretamente definido
+            'model' => App\Models\AuthUser::class, 
         ],
     ],
 
