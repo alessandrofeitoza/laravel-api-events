@@ -7,11 +7,15 @@ tags:
 - name: Spaces
   description: Todos os endpoints relacionados a Espacos
 - name: Events
-  description: Todos os endpoints relacionados a Eventos  
+  description: Todos os endpoints relacionados a Eventos
 - name: Rooms
   description: Todos os endpoints relacionados a Salas
+- name: Booking
+  description: Todos os endpoints relacionados a Reservas
 
 paths:
+  /booking:
+    $ref: './components/paths/booking/group-get-post.yaml'
   /rooms:
     get:
       tags: ['Rooms']
@@ -36,8 +40,10 @@ paths:
       parameters:
         - in: path
           name: id
+          required: true
+          schema:
+            type: string
           example: 0c4bf853-48a0-42a2-92b8-4c01698b0910
-
       responses:
         "200":
           description: Um objeto do tipo Room
@@ -52,3 +58,137 @@ paths:
                     type: string
                     example: Jack Ma
 
+  /users:
+    get:
+      tags: ['Users']
+      summary: Retrieve a list of users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags: ['Users']
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{id}:
+    get:
+      tags: ['Users']
+      summary: Retrieve a single user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      responses:
+        '200':
+          description: A single user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    delete:
+      tags: ['Users']
+      summary: Delete a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      responses:
+        '204':
+          description: User deleted
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    patch:
+      tags: ['Users']
+      summary: Update a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: john.doe@example.com
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: john.doe@example.com
+        password:
+          type: string
+          example: password123
+    NotFound:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Resource not found

@@ -1,0 +1,23 @@
+type:
+  object
+properties:
+    id:
+        type: integer
+        example: 1
+    name:
+      type: string
+      example: "Ana"
+    email:
+      type: string
+      example: "email.exemplo@email.com"
+    telefone:
+      type: string
+      example: "11999999999"
+    data:
+      type: string
+      format: date
+      example: "2021-12-31"
+    horario:
+      type: string
+      format: time
+      example: "12:00"

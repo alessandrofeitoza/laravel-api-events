@@ -12,7 +12,7 @@ class EventTypeRepository
 {
     public function findAll(): iterable
     {
-        $sql = "SELECT * FROM ".EventType::getTableName();
+        $sql = 'SELECT * FROM '.EventType::getTableName();
 
         return DB::select($sql);
     }

@@ -1,0 +1,17 @@
+tags:
+  - Booking
+summary: Cria uma reserva
+description: Cria uma reserva com os dados fornecidos
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '../../requestBodies/booking/create.yaml'
+  required: true
+responses:
+  '201':
+    description: Reserva criada com sucesso
+    content:
+      application/json:
+        schema:
+          $ref: '../../responses/booking/created.yaml'
