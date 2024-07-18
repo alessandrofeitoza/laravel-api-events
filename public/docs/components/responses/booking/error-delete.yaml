@@ -1,0 +1,10 @@
+description: Não encontrado
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+      error:
+        type: string
+        example: "Booking not found or already deleted."
+        description: O erro é retornado quando a reserva não foi encontrado ou quando já foi deletado.
