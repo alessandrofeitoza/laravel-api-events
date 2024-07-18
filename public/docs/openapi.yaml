@@ -162,6 +162,107 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
+  /spaces:
+    get:
+      tags: ['Spaces']
+      summary: Retrieve a list of space
+      responses:
+        '200':
+          description: A list of space
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Space'
+    post:
+      tags: ['Spaces']
+      summary: Create a new Space
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
+      responses:
+        '201':
+          description: Space created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+  /spaces/{id}:
+    get:
+      tags: ['Spaces']
+      summary: Retrieve a single space by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      responses:
+        '200':
+          description: A single space
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    delete:
+      tags: ['Spaces']
+      summary: Delete a space by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      responses:
+        '204':
+          description: Space deleted
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+    patch:
+      tags: ['Spaces']
+      summary: Update a space by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
+      responses:
+        '200':
+          description: Space updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Space'
+        '404':
+          description: Space not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
 
 components:
   schemas:
@@ -189,6 +290,22 @@ components:
         password:
           type: string
           example: password123
+    Space:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: School
+        description:
+          type: string
+          example: Talent school
+        address:
+          type: string
+          example: Street
+
     NotFound:
       type: object
       properties:
