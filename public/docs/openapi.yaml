@@ -10,8 +10,12 @@ tags:
   description: Todos os endpoints relacionados a Eventos
 - name: Rooms
   description: Todos os endpoints relacionados a Salas
+- name: Booking
+  description: Todos os endpoints relacionados a Reservas
 
 paths:
+  /booking:
+    $ref: './components/paths/booking/group-get-post.yaml'
   /rooms:
     get:
       tags: ['Rooms']
