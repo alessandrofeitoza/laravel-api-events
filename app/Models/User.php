@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getTableName(): string
+    {
+        return with(new static())->getTable();
+    }
 }
