@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BookingAdminController;
+
 Route::get('/', function () {
     return view('_templates/base');
 });
