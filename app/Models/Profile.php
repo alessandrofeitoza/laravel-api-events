@@ -12,12 +12,12 @@ class Profile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'nome',
         'description',
     ];
 
     public static function getTableName(): string
     {
-        return with(new static)->getTable();
+        return with(new self)->getTable();
     }
 }

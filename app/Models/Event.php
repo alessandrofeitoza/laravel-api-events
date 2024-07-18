@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,9 +14,9 @@ class Event extends Model
     use HasFactory;
     use SoftDeletes;
 
-    const RELATION_ROOM = 'room';
+    public const RELATION_ROOM = 'room';
 
-    const RELATION_EVENT_TYPE = 'eventType';
+    public const RELATION_EVENT_TYPE = 'eventType';
 
     protected $keyType = 'string';
 
@@ -24,12 +26,12 @@ class Event extends Model
         'name',
         'date',
         'room_id',
-        'event_type_id'
+        'event_type_id',
     ];
 
     public static function getTableName(): string
     {
-        return with(new self)->getTable();
+        return with(new self())->getTable();
     }
 
     public static function findAll(bool $join = false): iterable

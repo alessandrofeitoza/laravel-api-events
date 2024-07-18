@@ -16,7 +16,8 @@ class EventApiController extends ApiController
 {
     public function __construct(
         private EventRepository $repository
-    ) {}
+    ) {
+    }
 
     public function getAll(): JsonResponse
     {

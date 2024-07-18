@@ -12,7 +12,7 @@ class NotFoundJsonResponse extends JsonResponse
     public function __construct(string $message = 'Resource not found', int $status = Response::HTTP_NOT_FOUND)
     {
         parent::__construct([
-            'error' => $message
+            'error' => $message,
         ], $status);
     }
 }
