@@ -30,9 +30,9 @@
             <span class="hide-menu">UI COMPONENTS</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <a class="sidebar-link" href="/admin/booking" aria-expanded="false">
               <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
-              <span class="hide-menu">Buttons</span>
+              <span class="hide-menu">Booking</span>
             </a>
           </li>
           <li class="sidebar-item">
