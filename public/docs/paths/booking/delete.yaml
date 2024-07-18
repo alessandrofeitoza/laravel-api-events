@@ -1,0 +1,11 @@
+tags:
+  - Booking
+  summary: Apaga uma reserva
+  description: Apaga uma reserva específica usando seu ID.
+  parameters:
+    - $ref: '../../parameters/path/id.yaml'
+  responses:
+    '200':
+      description: "[]"
+    '400':
+      $ref: '../../responses/event/error-delete.yaml'
