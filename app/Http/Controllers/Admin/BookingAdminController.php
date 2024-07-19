@@ -13,55 +13,50 @@ use App\Models\Booking;
 
 class BookingAdminController extends Controller
 {
-    public function list (): mixed 
+    public function list(): mixed
     {
         $bookings = Booking::all();
-    
+        
         return view('booking/list', [
             'bookings' => $bookings,
         ]);
-    } 
+    }
 
-    public function getOne (string $id ): JsonResponse 
+    public function getOne(string $id): JsonResponse
     {
         try {
-
-            $bookings = Booking::findOrFail($id);
-            return new JsonResponse($bookings);
-
+            $booking = Booking::findOrFail($id);
+            return new JsonResponse($booking);
         } catch (Exception) {
-
             return new NotFoundJsonResponse();
-        } 
-    } 
+        }
+    }
 
-
-    public function store (): mixed 
+    public function store(): mixed
     {
- 
-    } 
+        
+    }
 
-
-    public function update (string $id,Request $request): mixed 
+    public function update(string $id, Request $request): mixed
     {
         try {
-            if(empty($id)) {
+            if (empty($id)) {
                 return new JsonResponse([
-                    'message'=> 'Booking not found'
-                ],404);
+                    'message' => 'Booking not found',
+                ], 404);
             }
-            $bookings = Booking::findOrFail($id);
-            $bookings -> update($request->all());
+            $booking = Booking::findOrFail($id);
+            $booking->update($request->all());
 
             return new JsonResponse([
-                'message'=> 'Booking updated Successfully',
-                'booking' => $bookings
+                'message' => 'Booking updated successfully',
+                'booking' => $booking,
             ]);
         } catch (Exception) {
             return new JsonResponse([
-                'message'=> 'Failed to update Booking',
-
-            ],500);
+                'message' => 'Failed to update booking',
+            ], 500);
         }
-    } 
+    }
 }
+
