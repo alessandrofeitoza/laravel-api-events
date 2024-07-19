@@ -20,6 +20,6 @@ class BookingAdminController extends Controller
 
     public function store (): mixed 
     {
- 
-    } 
+        return view('admin/booking/add');
+    }
 }
