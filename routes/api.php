@@ -80,4 +80,5 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
 
 Route::controller(BookingAdminController::class)->prefix('/bookings')->group(function () {
     Route::get('/{id}', 'getOne');
+    Route::patch('/update/{id}', 'update');
 });
