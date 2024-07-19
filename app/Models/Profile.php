@@ -18,6 +18,6 @@ class Profile extends Model
 
     public static function getTableName(): string
     {
-        return with(new self)->getTable();
+        return with(new self())->getTable();
     }
 }

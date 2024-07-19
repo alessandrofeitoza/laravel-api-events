@@ -16,7 +16,7 @@ class BookingAdminController extends Controller
     public function list(): mixed
     {
         $bookings = Booking::all();
-        
+
         return view('booking/list', [
             'bookings' => $bookings,
         ]);
@@ -59,4 +59,3 @@ class BookingAdminController extends Controller
         }
     }
 }
-
