@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\BookingApiController;
 use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
 use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\Admin\BookingAdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -78,6 +78,6 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
     Route::patch('/{id}', 'update');
 });
 
-Route::controller(BookingApiController::class)->prefix('/bookings')->group(function () {
-    Route::get('/', 'getAll');
+Route::controller(BookingAdminController::class)->prefix('/bookings')->group(function () {
+    Route::get('/{id}', 'getOne');
 });

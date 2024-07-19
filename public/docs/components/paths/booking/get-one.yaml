@@ -1,0 +1,26 @@
+tags:
+  - Bookings
+summary: Apaga uma reserva
+description: Apaga uma reserva específica usando seu ID.
+parameters:
+  - $ref: '../../parameters/path/id.yaml'
+responses:
+  '200':
+    description: Sucesso. Retorna o booking encontrado.
+    content:
+      application/json:
+        schema:
+          type: object  
+          properties:
+            id:
+              type: integer
+              example: 1
+            title:
+              type: string
+              example: "Reserva de Hotel"
+            description:
+              type: string
+              example: "Reserva de hotel para duas noites."
+  '400':
+  - $ref: '../../responses/booking/error-delete.yaml'
+
