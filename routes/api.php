@@ -80,4 +80,5 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
 
 Route::controller(BookingApiController::class)->prefix('/bookings')->group(function () {
     Route::get('/', 'getAll');
+    Route::delete('/{id}', 'delete');
 });
