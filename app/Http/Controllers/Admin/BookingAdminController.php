@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Http\JsonResponse\NotFoundJsonResponse;
-use Illuminate\Http\Request;
-use Exception;
 use App\Models\Booking;
+use Exception;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BookingAdminController extends Controller
 {
@@ -26,6 +26,7 @@ class BookingAdminController extends Controller
     {
         try {
             $booking = Booking::findOrFail($id);
+
             return new JsonResponse($booking);
         } catch (Exception) {
             return new NotFoundJsonResponse();
@@ -34,7 +35,6 @@ class BookingAdminController extends Controller
 
     public function store(): mixed
     {
-        
     }
 
     public function update(string $id, Request $request): mixed
@@ -45,6 +45,7 @@ class BookingAdminController extends Controller
                     'message' => 'Booking not found',
                 ], 404);
             }
+
             $booking = Booking::findOrFail($id);
             $booking->update($request->all());
 

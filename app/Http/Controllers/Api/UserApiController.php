@@ -8,8 +8,8 @@ use App\Exception\ResourceNotFoundException;
 use App\Http\JsonResponse\NotFoundJsonResponse;
 use App\Models\User;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserApiController extends ApiController
