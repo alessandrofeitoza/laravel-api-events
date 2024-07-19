@@ -1,0 +1,41 @@
+tags:
+  - Bookings
+summary: Retorna uma lista com todas as reservas
+description: Uma lista com todas as reservas
+responses:
+  '200':
+    description: Um array com todas as reservas
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: integer
+              description: O identificador da reserva
+            customer:
+              type: string
+              description: O nome do cliente
+            email:
+              type: string
+              description: O email do cliente
+            phone:
+              type: string
+              description: O telefone do cliente
+            begin_date:
+              type: string
+              description: A data de início da reserva
+            end_date:
+              type: string
+              description: A data de fim da reserva
+            status:
+              type: boolean
+              description: O status da reserva
+            created_at:
+              type: string
+              description: A data de criação da reserva
+            updated_at:
+              type: string
+              description: A data de atualização da reserva
+            deleted_at:
+              type: string
+              description: A data de exclusão da reserva

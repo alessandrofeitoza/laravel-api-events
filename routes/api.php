@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BookingApiController;
 use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
@@ -77,3 +78,6 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
     Route::patch('/{id}', 'update');
 });
 
+Route::controller(BookingApiController::class)->prefix('/bookings')->group(function () {
+    Route::get('/', 'getAll');
+});

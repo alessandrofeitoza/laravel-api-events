@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Booking;
@@ -24,7 +26,7 @@ class BookingSeeder extends Seeder
             'end_date' => '2024-07-19 10:00:00',
             'status' => false,
         ],
-        
+
     ];
 
     public function run(): void
