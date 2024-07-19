@@ -16,6 +16,8 @@ tags:
 paths:
   /booking:
     $ref: './components/paths/booking/group-get-post.yaml'
+  /booking/{id}:
+    $ref: './components/paths/booking/group-param-id.yaml'
   /rooms:
     get:
       tags: ['Rooms']
