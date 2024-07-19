@@ -1,0 +1,76 @@
+tags:
+  - Bookings
+summary: Atualiza uma reserva
+description: Atualiza uma reserva específica usando seu ID.
+parameters:
+  - $ref: '../../parameters/path/id.yaml'
+responses:
+  '200':
+    description: Sucesso. Retorna a mensagem de sucesso e o booking atualizado.
+    content:
+      application/json:
+        schema:
+          type: object  
+          properties:
+            message:
+              type: string
+              example: "Booking updated Successfully"
+            booking:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                customer:
+                  type: string
+                  example: "TesteUpdate"
+                email:
+                  type: string
+                  example: "teste@email.com"
+                phone:
+                  type: string
+                  example: "558512345679"
+                begin_date:
+                  type: string
+                  format: date-time
+                  example: "2024-07-18 18:00:00"
+                end_date:
+                  type: string
+                  format: date-time
+                  example: "2024-07-18 22:00:00"
+                status:
+                  type: integer
+                  example: 1
+                created_at:
+                  type: string
+                  format: date-time
+                  example: "2024-07-19T00:01:14.000000Z"
+                updated_at:
+                  type: string
+                  format: date-time
+                  example: "2024-07-19T18:02:48.000000Z"
+                deleted_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                  example: null
+  '500':
+    description: Erro interno do servidor
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Internal Server Error"
+  '404':
+    description: Reserva não encontrada. Retorna uma mensagem de erro.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Booking not found."

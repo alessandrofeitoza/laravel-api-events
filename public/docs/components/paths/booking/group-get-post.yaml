@@ -3,3 +3,6 @@ get:
 
 post :
   $ref: './create.yaml'
+  
+patch :
+  $ref: './update.yaml'
