@@ -29,12 +29,27 @@
             <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
             <span class="hide-menu">UI COMPONENTS</span>
           </li>
+
           <li class="sidebar-item">
-            <a class="sidebar-link" href="/admin/booking" aria-expanded="false">
-              <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
-              <span class="hide-menu">Booking</span>
+            <a class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" href="#bookingCollapse" data-bs-toggle="collapse" aria-expanded="false">
+                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="mr-2 text-blue-500"></iconify-icon>
+                <span class="hide-menu text-blue-500 font-semibold">Booking</span>
             </a>
-          </li>
+            <div class="collapse" id="bookingCollapse" style="margin-top: 15px">
+                <ul class="list-unstyled pl-4 border-l-4 border-blue-500">
+                    <li class="sidebar-subitem mb-4">
+                        <a class="sidebar-sublink block p-2 border border-gray-300 rounded hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200" href="/admin/booking">
+                            <span class="hide-menu font-medium">List </span>
+                        </a>
+                    </li>
+                    <li class="sidebar-subitem mb-4">
+                        <a class="sidebar-sublink block p-2 border border-gray-300 rounded hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200" href="/admin/booking/cadastro">
+                            <span class="hide-menu font-medium">Create</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
               <iconify-icon icon="solar:danger-circle-line-duotone"></iconify-icon>
