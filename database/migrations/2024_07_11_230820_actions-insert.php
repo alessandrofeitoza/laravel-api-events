@@ -4,41 +4,45 @@ declare(strict_types=1);
 
 use App\Models\Action;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
+    private const VALUES = [
+        [
+            'id' => 1,
+            'name' => 'GET',
+            'description' => 'Get',
+        ],
+        [
+            'id' => 2,
+            'name' => 'POST',
+            'description' => 'Post',
+        ],
+        [
+            'id' => 3,
+            'name' => 'UPDATE',
+            'description' => 'Update',
+        ],
+        [
+            'id' => 4,
+            'name' => 'DELETE',
+            'description' => 'Delete',
+        ],
+    ];
+
     public function up(): void
     {
-        $actions = new Action();
+        foreach (self::VALUES as $item) {
+            $object = new Action();
+            $object->fill($item);
 
-        $actions->post([
-            'name' => 'Post',
-            'description' => 'Create a new resource',
-        ]);
-
-        $actions->get([
-            'name' => 'Get',
-            'description' => 'Read a resource',
-        ]);
-
-        $actions->put([
-            'name' => 'Update',
-            'description' => 'Update a resource',
-        ]);
-
-        $actions->delete([
-            'name' => 'Delete',
-            'description' => 'Delete a resource'
-        ]);
-
-        $actions->save();
+            $object->saveOrFail();
+        }
     }
 
     public function down(): void
     {
-        Action::where('name', 'Post')->delete();
-        Action::where('name', 'Get')->delete();
-        Action::where('name', 'Update')->delete();
-        Action::where('name', 'Delete')->delete();
+        DB::table(Action::getTableName())->truncate();
     }
 };
