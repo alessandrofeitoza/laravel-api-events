@@ -14,7 +14,7 @@ class BookingTest extends TestCase
         $content = json_decode($response->getContent(), true);
 
         $this->assertEquals('Mariazinha', $content[0]['customer']);
-
+        
         $response->assertStatus(200);
         $response->assertJsonStructure([
             '*' => [
