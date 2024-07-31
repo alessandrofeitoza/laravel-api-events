@@ -15,9 +15,9 @@ abstract class AbstractLog
 
     public function store(): void
     {
-        $file = fopen(dirname(__DIR__, 2)."/logs/{$this->type}.csv", 'a+');
+        $file = fopen(dirname(__DIR__, 2) . "/logs/{$this->type}.csv", 'a+');
 
-        $content = $this->title . ";" .date('Y-m-d H:i:s').";{$this->content}";
+        $content = $this->title . ";" . date('Y-m-d H:i:s') . ";{$this->content}";
 
         fwrite($file, $content . PHP_EOL);
     }
