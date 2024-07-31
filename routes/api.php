@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BookingApiController;
 use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
@@ -26,15 +27,15 @@ Route::post('/login', function (Request $request) {
 
     if (null === $user) {
         password_verify('1234', '$2a$12$HuO4kv30f1XaK8.Qa6OPs.w43hQhrqjdRE6oyphgP8bn8CjhfvrhG');
-        
+
         (new ErrorLog('Login: user not found', "email: {$request->get('email')}"))->store();
-        
+
         return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
     }
 
     if (false === password_verify($request->get('password'), $user->password)) {
         (new ErrorLog('Login: incorrect password', "email: {$user->email}"))->store();
-        
+
         return new App\Http\JsonResponse\ErrorJsonResponse('Invalid credentials');
     }
 
@@ -91,4 +92,9 @@ Route::controller(UserApiController::class)->prefix('/users')->group(function ()
 Route::controller(BookingAdminController::class)->prefix('/bookings')->group(function () {
     Route::get('/{id}', 'getOne');
     Route::patch('/update/{id}', 'update');
+});
+
+Route::controller(BookingApiController::class)->prefix('/bookings')->group(function () {
+    Route::get('/', 'getAll');
+    Route::delete('/{id}', 'delete');
 });
