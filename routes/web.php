@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\RoomTypeAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BookingAdminController;
@@ -18,3 +19,8 @@ Route::get('/teste', function() {
 Route::get('/admin/usuarios', [UserAdminController::class, 'list']);
 Route::get('/admin/reservas', [BookingAdminController::class, 'list']);
 Route::any('/admin/reservas/add', [BookingAdminController::class, 'store']);
+
+Route::controller(RoomTypeAdminController::class)->prefix('/admin/tipos-sala')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});

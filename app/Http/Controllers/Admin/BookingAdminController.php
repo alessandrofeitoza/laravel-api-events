@@ -46,7 +46,7 @@ class BookingAdminController extends Controller
 
             $booking->save();
 
-            return redirect('/admin/booking');
+            return redirect('/admin/reservas');
         }
 
         return view('admin/booking/add');

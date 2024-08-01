@@ -13,33 +13,38 @@
       <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
         <ul id="sidebarnav">
           <li class="nav-small-cap">
-            <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-            <span class="hide-menu">Home</span>
+              <a href="/">
+                  <span class="hide-menu">Home</span>
+              </a>
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./index.html" aria-expanded="false">
-              <iconify-icon icon="solar:widget-add-line-duotone"></iconify-icon>
+              <i class="material-icons">dashboard</i>
               <span class="hide-menu">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/admin/reservas" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                <i class="material-icons">schedule</i>
+                <span class="hide-menu text-blue-500 font-semibold">Reservas</span>
             </a>
           </li>
           <li>
             <span class="sidebar-divider lg"></span>
           </li>
           <li class="nav-small-cap">
-            <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-            <span class="hide-menu">ACTIONS</span>
-          </li>
-
-          <li class="sidebar-item">
-            <a href="/admin/reservas" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
-                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="mr-2 text-blue-500"></iconify-icon>
-                <span class="hide-menu text-blue-500 font-semibold">Reservas</span>
-            </a>
+            <span class="hide-menu">GERENCIAMENTO</span>
           </li>
           <li class="sidebar-item">
             <a href="/admin/usuarios" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
-                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="mr-2 text-blue-500"></iconify-icon>
+                <i class="material-icons">group</i>
                 <span class="hide-menu text-blue-500 font-semibold">Usuários</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/admin/tipos-sala" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                <i class="material-icons">school</i>
+                <span class="hide-menu text-blue-500 font-semibold">Tipos de Sala</span>
             </a>
           </li>
 
@@ -52,8 +57,8 @@
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="/logout" aria-expanded="false">
-              <iconify-icon icon="solar:login-3-line-duotone"></iconify-icon>
-              <span class="hide-menu">Logout</span>
+                <i class="material-icons">logout</i>
+                <span class="hide-menu">Logout</span>
             </a>
           </li>
           <li>
@@ -65,7 +70,7 @@
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="/docs/index.html" aria-expanded="false">
-              <iconify-icon icon="solar:sticker-smile-circle-2-line-duotone"></iconify-icon>
+              <i class="material-icons">description</i>
               <span class="hide-menu">Docs</span>
             </a>
           </li>
