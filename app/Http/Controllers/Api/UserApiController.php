@@ -14,8 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserApiController extends ApiController
 {
-    public function __construct(private UserRepository $repository)
-    {
+    public function __construct(
+        private UserRepository $repository
+    ) {
     }
 
     public function getAll(): JsonResponse
