@@ -49,7 +49,7 @@ class BookingAdminController extends Controller
             return redirect('/admin/reservas');
         }
 
-        return view('admin/booking/add');
+        return view('admin/reservas/add');
     }
 
     public function update(string $id, Request $request): mixed
