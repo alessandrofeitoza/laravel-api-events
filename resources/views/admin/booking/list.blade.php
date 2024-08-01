@@ -1,8 +1,15 @@
-@extends('_templates/base')
+@extends('_templates.base')
 
 @section('content')
     <div class="card card-body">
-        <h1>Bookings</h1>
+        <div class="d-flex justify-content-between">
+            <h1>Reservas</h1>
+            <div>
+                <a class="btn btn-outline-primary" href="/admin/reservas/add">
+                    Nova Reserva
+                </a>
+            </div>
+        </div>
         <hr>
         <table class="table table-hover table-striped">
             <thead class="table-dark">
@@ -18,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($bookings as $booking) 
+                @foreach ($bookings as $booking)
                     <tr>
                         <td>{{ $booking->id }}</td>
                         <td>{{ $booking->customer }}</td>
@@ -28,8 +35,8 @@
                         <td>{{ $booking->end_date }}</td>
                         <td>{{ $booking->status }}</td>
                         <td>
-                            <button class="btn btn-outline-warning">Editar</button>
-                            <button class="btn btn-outline-danger">Excluir</button>
+                            <button class="btn btn-sm btn-outline-warning">Editar</button>
+                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
                         </td>
                     </tr>
                 @endforeach

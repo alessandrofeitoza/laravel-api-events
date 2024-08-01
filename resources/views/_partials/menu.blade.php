@@ -27,53 +27,22 @@
           </li>
           <li class="nav-small-cap">
             <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-            <span class="hide-menu">UI COMPONENTS</span>
+            <span class="hide-menu">ACTIONS</span>
           </li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" href="#bookingCollapse" data-bs-toggle="collapse" aria-expanded="false">
+            <a href="/admin/reservas" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
                 <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="mr-2 text-blue-500"></iconify-icon>
-                <span class="hide-menu text-blue-500 font-semibold">Booking</span>
-            </a>
-            <div class="collapse" id="bookingCollapse" style="margin-top: 15px">
-                <ul class="list-unstyled pl-4 border-l-4 border-blue-500">
-                    <li class="sidebar-subitem mb-4">
-                        <a class="sidebar-sublink block p-2 border border-gray-300 rounded hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200" href="/admin/booking">
-                            <span class="hide-menu font-medium">List </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-subitem mb-4">
-                        <a class="sidebar-sublink block p-2 border border-gray-300 rounded hover:border-blue-500 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200" href="/admin/booking/cadastro">
-                            <span class="hide-menu font-medium">Create</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-              <iconify-icon icon="solar:danger-circle-line-duotone"></iconify-icon>
-              <span class="hide-menu">Alerts</span>
+                <span class="hide-menu text-blue-500 font-semibold">Reservas</span>
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-              <iconify-icon icon="solar:bookmark-square-minimalistic-line-duotone"></iconify-icon>
-              <span class="hide-menu">Card</span>
+            <a href="/admin/usuarios" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="mr-2 text-blue-500"></iconify-icon>
+                <span class="hide-menu text-blue-500 font-semibold">Usuários</span>
             </a>
           </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-              <iconify-icon icon="solar:file-text-line-duotone"></iconify-icon>
-              <span class="hide-menu">Forms</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-              <iconify-icon icon="solar:text-field-focus-line-duotone"></iconify-icon>
-              <span class="hide-menu">Typography</span>
-            </a>
-          </li>
+
           <li>
             <span class="sidebar-divider lg"></span>
           </li>
@@ -82,15 +51,9 @@
             <span class="hide-menu">AUTH</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+            <a class="sidebar-link" href="/logout" aria-expanded="false">
               <iconify-icon icon="solar:login-3-line-duotone"></iconify-icon>
-              <span class="hide-menu">Login</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-              <iconify-icon icon="solar:user-plus-rounded-line-duotone"></iconify-icon>
-              <span class="hide-menu">Register</span>
+              <span class="hide-menu">Logout</span>
             </a>
           </li>
           <li>
@@ -101,26 +64,17 @@
             <span class="hide-menu">EXTRA</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+            <a class="sidebar-link" href="/docs/index.html" aria-expanded="false">
               <iconify-icon icon="solar:sticker-smile-circle-2-line-duotone"></iconify-icon>
-              <span class="hide-menu">Icons</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-              <iconify-icon icon="solar:planet-3-line-duotone"></iconify-icon>
-              <span class="hide-menu">Sample Page</span>
+              <span class="hide-menu">Docs</span>
             </a>
           </li>
         </ul>
         <div
           class="unlimited-access d-flex align-items-center hide-menu bg-primary-subtle position-relative mb-7 mt-4 p-3 rounded">
           <div class="me-2 flex-shrink-0">
-            <h6 class="fw-semibold fs-4 mb-6 text-dark w-75">Upgrade to pro</h6>
-            <a href="https://adminmart.com/product/matdash-bootstrap-5-admin-dashboard-template/" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
-          </div>
-          <div class="unlimited-access-img">
-            <img src="../assets/images/backgrounds/rupee.png" alt="" class="img-fluid">
+            <h6 class="fw-semibold fs-4 mb-6 text-dark w-75">Github</h6>
+            <a href="https://github.com/alessandrofeitoza/laravel-api-events" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Contribua</a>
           </div>
         </div>
       </nav>

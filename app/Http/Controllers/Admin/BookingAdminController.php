@@ -17,7 +17,7 @@ class BookingAdminController extends Controller
     {
         $bookings = Booking::all();
 
-        return view('booking/list', [
+        return view('admin/booking/list', [
             'bookings' => $bookings,
         ]);
     }
@@ -33,8 +33,22 @@ class BookingAdminController extends Controller
         }
     }
 
-    public function store(): mixed
+    public function store(Request $request): mixed
     {
+        if (true === $request->isMethod('post')) {
+            $booking = new Booking();
+            $booking->customer = $request->input('customer');
+            $booking->email = $request->input('email');
+            $booking->phone = $request->input('phone');
+            $booking->begin_date = $request->input('begin_date');
+            $booking->end_date = $request->input('end_date');
+            $booking->status = $request->input('status');
+
+            $booking->save();
+
+            return redirect('/admin/booking');
+        }
+
         return view('admin/booking/add');
     }
 
