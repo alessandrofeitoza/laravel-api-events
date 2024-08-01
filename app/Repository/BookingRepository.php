@@ -12,4 +12,9 @@ class BookingRepository
     {
         return Booking::all();
     }
+
+    public function remove(int $id): void
+    {
+        Booking::destroy($id);
+    }
 }

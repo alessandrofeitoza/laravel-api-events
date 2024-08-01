@@ -19,4 +19,15 @@ class BookingApiController extends ApiController
             $this->bookingRepository->findAll()
         );
     }
+
+    public function delete(string $id): JsonResponse
+    {
+        try {
+            $this->bookingRepository->remove((int) $id);
+
+            return new JsonResponse(status: Response::HTTP_NO_CONTENT);
+        } catch (Exception) {
+            return new NotFoundJsonResponse();
+        }
+    }
 }
