@@ -16,15 +16,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user) 
+                @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                            <button class="btn btn-outline-warning">Editar</button>
-                            <button class="btn btn-outline-danger">Excluir</button>
+                            <button class="btn btn-sm btn-outline-warning">Editar</button>
+                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
                         </td>
                     </tr>
                 @endforeach
