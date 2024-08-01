@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> @yield('title') </title>
   <link rel="shortcut icon" type="image/png" href="/template/assets/images/logos/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+          rel="stylesheet">
   <link rel="stylesheet" href="/template/assets/css/styles.min.css" />
 </head>
 
