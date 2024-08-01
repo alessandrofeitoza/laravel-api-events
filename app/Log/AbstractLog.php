@@ -17,7 +17,8 @@ abstract class AbstractLog
     {
         $file = fopen(dirname(__DIR__, 2)."/logs/{$this->type}.csv", 'a+');
 
-        $content = $this->title.';'.date('Y-m-d H:i:s').';'.$this->content;
+        $date = date('Y-m-d H:i:s');
+        $content = "{$this->title};{$date};{$this->content}";
 
         fwrite($file, $content.PHP_EOL);
     }

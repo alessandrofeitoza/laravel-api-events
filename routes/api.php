@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\EventApiController;
 use App\Http\Controllers\Api\EventTypeApiController;
 use App\Http\Controllers\Api\RoomApiController;
 use App\Http\Controllers\Api\RoomTypeApiController;
+use App\Http\Controllers\Api\SpaceApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Admin\BookingAdminController;
 use Illuminate\Http\Request;
@@ -82,6 +83,14 @@ Route::controller(EventApiController::class)->prefix('/events')->group(function 
 });
 
 Route::controller(UserApiController::class)->prefix('/users')->group(function () {
+    Route::get('/', 'getAll');
+    Route::get('/{id}', 'getOne');
+    Route::delete('/{id}', 'delete');
+    Route::post('/', 'create');
+    Route::patch('/{id}', 'update');
+});
+
+Route::controller(SpaceApiController::class)->prefix('/spaces')->group(function () {
     Route::get('/', 'getAll');
     Route::get('/{id}', 'getOne');
     Route::delete('/{id}', 'delete');
