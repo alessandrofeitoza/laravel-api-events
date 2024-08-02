@@ -53,6 +53,17 @@
                 <span class="hide-menu text-blue-500 font-semibold">Tipos de Evento</span>
             </a>
           </li>
+          <li class="sidebar-item">
+            <a href="/admin/spaces" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                <i class="material-icons">villa</i>
+                <span class="hide-menu text-blue-500 font-semibold">Espaços</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="/admin/spaces" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                <i class="material-icons">villa</i>
+                <span class="hide-menu text-blue-500 font-semibold">Espaços</span>
+          </li>
 
           <li>
             <span class="sidebar-divider lg"></span>

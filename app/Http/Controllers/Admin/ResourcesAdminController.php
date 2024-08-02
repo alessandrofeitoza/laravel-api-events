@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\RoomType;
+use App\Models\Resource;
 use Illuminate\Http\Request;
 
-class RoomTypeAdminController extends Controller
+class ResourcesAdminController extends Controller
 {
-    private const VIEW_BASE_PATH = 'admin/room-type/';
-    private const BASE_URL = '/admin/tipos-sala';
+    private const VIEW_BASE_PATH = 'admin/resources';
+    private const BASE_URL = '/admin/resources';
 
     public function list(): mixed
     {
-        $data = RoomType::all();
+        $data = Resource::all();
 
         return view(self::VIEW_BASE_PATH.'/list', [
             'data' => $data,
@@ -25,24 +25,24 @@ class RoomTypeAdminController extends Controller
     public function store(Request $request): mixed
     {
         if (false === $request->isMethod('post')) {
-            return view(self::VIEW_BASE_PATH.'add');
+            return view(self::VIEW_BASE_PATH.'/add');
         }
 
-        $exists = RoomType::where('name', $request->input('name'))->first();
+        $exists = Resource::where('name', $request->input('name'))->first();
 
         if (null !== $exists) {
-            $request->session()->flash('error', 'Tipo de sala já existe');
+            $request->session()->flash('error', 'Tipo de recurso já existe');
 
             return view(self::VIEW_BASE_PATH.'add');
         }
 
-        $object = new RoomType();
+        $object = new Resource();
         $object->name = $request->input('name');
         $object->description = $request->input('description');
 
         $object->save();
 
-        $request->session()->flash('success', 'Novo tipo de sala inserido');
+        $request->session()->flash('success', 'Novo tipo de recurso inserido');
 
         return redirect(self::BASE_URL);
     }

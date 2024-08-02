@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BookingAdminController;
 use App\Http\Controllers\Admin\EventTypeAdminController;
-
+use App\Http\Controllers\Admin\ResourcesAdminController;
+use App\Http\Controllers\Admin\SpaceAdminController;
 
 Route::get('/', function () {
     return view('_templates/base');
@@ -26,8 +27,17 @@ Route::controller(RoomTypeAdminController::class)->prefix('/admin/tipos-sala')->
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
-
 Route::controller(EventTypeAdminController::class)->prefix('/admin/tipos-evento')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
+Route::controller(ResourcesAdminController::class)->prefix('/admin/resources')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});
+
+Route::controller(SpaceAdminController::class)->prefix('/admin/spaces')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});
+
