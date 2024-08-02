@@ -26,7 +26,10 @@ Route::controller(RoomTypeAdminController::class)->prefix('/admin/tipos-sala')->
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
-
+Route::controller(EventTypeAdminController::class)->prefix('/admin/tipos-evento')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});
 Route::controller(ResourcesAdminController::class)->prefix('/admin/resources')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
