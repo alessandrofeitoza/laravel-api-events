@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\JsonResponse\NotFoundJsonResponse;
 use App\Models\EventType;
-use Exception;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Ramsey\Uuid\Uuid;
 
 class EventTypeAdminController extends Controller
@@ -20,7 +17,7 @@ class EventTypeAdminController extends Controller
     {
         $data = EventType::all();
 
-        return view(self::VIEW_BASE_PATH . 'list', [
+        return view(self::VIEW_BASE_PATH.'list', [
             'data' => $data,
         ]);
     }
@@ -28,11 +25,11 @@ class EventTypeAdminController extends Controller
     public function store(Request $request): mixed
     {
         if (false === $request->isMethod('post')) {
-            return view(self::VIEW_BASE_PATH . 'add');
+            return view(self::VIEW_BASE_PATH.'add');
         }
 
         $object = new EventType();
-        $object->id = (Uuid::uuid4())->toString();
+        $object->id = Uuid::uuid4()->toString();
         $object->name = $request->input('name');
 
         $object->save();
