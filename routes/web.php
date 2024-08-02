@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BookingAdminController;
 use App\Http\Controllers\Admin\EventTypeAdminController;
-
+use App\Http\Controllers\Admin\ResourcesAdminController;
 
 Route::get('/', function () {
     return view('_templates/base');
@@ -27,7 +27,7 @@ Route::controller(RoomTypeAdminController::class)->prefix('/admin/tipos-sala')->
     Route::any('/add', 'store');
 });
 
-Route::controller(EventTypeAdminController::class)->prefix('/admin/tipos-evento')->group(function () {
+Route::controller(ResourcesAdminController::class)->prefix('/admin/resources')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
