@@ -9,9 +9,9 @@ use App\Models\Room;
 
 class RoomRepository
 {
-    public function findAll(): iterable
+    public function findAll($withRelations = false): iterable
     {
-        return Room::all();
+        return Room::findAll($withRelations);
     }
 
     public function save(Room $room): void

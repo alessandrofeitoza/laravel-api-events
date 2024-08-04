@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\RoomAdminController;
 use App\Http\Controllers\Admin\RoomTypeAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
@@ -23,14 +24,23 @@ Route::get('/admin/usuarios', [UserAdminController::class, 'list']);
 Route::get('/admin/reservas', [BookingAdminController::class, 'list']);
 Route::any('/admin/reservas/add', [BookingAdminController::class, 'store']);
 
+Route::controller(RoomAdminController::class)->prefix('/admin/rooms')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+    Route::any('/{id}', 'edit')->name('admin.rooms.edit');
+    Route::delete('/{id}', 'delete')->name('admin.rooms.delete');
+});
+
 Route::controller(RoomTypeAdminController::class)->prefix('/admin/tipos-sala')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
+
 Route::controller(EventTypeAdminController::class)->prefix('/admin/tipos-evento')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
+
 Route::controller(ResourcesAdminController::class)->prefix('/admin/resources')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
