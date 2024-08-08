@@ -60,11 +60,17 @@
             </a>
           </li>
           <li class="sidebar-item">
-              <a href="/admin/resources" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
-                  <i class="material-icons">celebration</i>
-                  <span class="hide-menu text-blue-500 font-semibold">Resources</span>
-              </a>
+            <a href="/admin/resources" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+              <i class="material-icons">celebration</i>
+                <span class="hide-menu text-blue-500 font-semibold">Resources</span>
+            </a>
           </li>
+            <li class="sidebar-item">
+                <a href="/admin/profiles" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
+                    <i class="material-icons">assignment</i>
+                    <span class="hide-menu text-blue-500 font-semibold">Perfis</span>
+                </a>
+            </li>
           <li class="sidebar-item">
             <a href="/admin/spaces" class="sidebar-link flex items-center p-2 hover:bg-blue-100 transition-colors duration-200" aria-expanded="false">
                 <i class="material-icons">villa</i>
