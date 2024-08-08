@@ -23,7 +23,11 @@ Route::get('/teste', function() {
     echo "teste";
 });
 
-Route::get('/admin/usuarios', [UserAdminController::class, 'list']);
+Route::controller(UserAdminController::class)->prefix('/admin/usuarios')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});
+
 Route::get('/admin/reservas', [BookingAdminController::class, 'list']);
 Route::any('/admin/reservas/add', [BookingAdminController::class, 'store']);
 
