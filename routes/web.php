@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\Admin\RoomTypeAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
@@ -37,6 +38,11 @@ Route::controller(ResourcesAdminController::class)->prefix('/admin/resources')->
 });
 
 Route::controller(SpaceAdminController::class)->prefix('/admin/spaces')->group(function () {
+    Route::get('/', 'list');
+    Route::any('/add', 'store');
+});
+
+Route::controller(ProfileAdminController::class)->prefix('/admin/profiles')->group(function () {
     Route::get('/', 'list');
     Route::any('/add', 'store');
 });
